@@ -3,13 +3,11 @@
 
 const koa = require('koa');
 const request = require('supertest');
-const params = require('../../lib/web/params');
-
 
 describe('web/params', () => {
   it('this.params', () => {
     const app = koa();
-    params(app);
+    require('../../lib/web/params')(app);
     app.use(require('koa-bodyparser')());
     app.use(function* () {
       const params = this.params;

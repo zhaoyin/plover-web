@@ -11,14 +11,14 @@ describe('security/assert-method', () => {
   const app = koa();
   assertMethod(app);
 
-  app.use(function* (next) {
+  app.use(function* () {
     if (this.path === '/post') {
       this.assertMethod('post');
     }
     if (this.path === '/get') {
       this.assertMethod(['get']);
     }
-    this.body = 'ok'
+    this.body = 'ok';
   });
 
   const agent = request.agent(app.callback());

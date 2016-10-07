@@ -7,6 +7,9 @@ const co = require('co');
 const charset = require('../../lib/web/charset');
 
 
+/* eslint max-nested-callbacks: [2, 4] */
+
+
 describe('web/charset', () => {
   it('output gbk with query _output_charset', () =>{
     const app = koa();
@@ -15,7 +18,7 @@ describe('web/charset', () => {
       if (this.path === '/a') {
         this.body = '中国';
       } else if (this.path === '/b') {
-        this.body = { data: '中国' }
+        this.body = { data: '中国' };
       }
     });
 

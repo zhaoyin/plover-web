@@ -46,7 +46,7 @@ describe('plugin', function() {
     return agent.get('/hello')
       .expect('X-XSS-Protection', '1; mode=block')
       .expect('X-Content-Type-Options', 'nosniff')
-      .expect('X-Download-Options', 'noopen')
+      .expect('X-Download-Options', 'noopen');
   });
 });
 

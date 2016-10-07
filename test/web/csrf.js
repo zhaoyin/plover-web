@@ -4,12 +4,12 @@
 const koa = require('koa');
 const request = require('supertest');
 const co = require('co');
-const util = require('../../lib/util/util');
-const csrf = require('../../lib/web/csrf');
+
+
+/* eslint max-nested-callbacks: [2, 4] */
 
 
 describe('web/csrf', () => {
-
   const app = koa();
   app.keys = ['test'];
   app.use(require('koa-session')({}, app));
@@ -24,7 +24,7 @@ describe('web/csrf', () => {
     ]
   };
 
-  app.use(csrf.middleware(opts));
+  app.use(require('../../lib/web/csrf').middleware(opts));
   app.use(function* (next) {
     if (this.path === '/getcsrf') {
       this.body = this.csrf;
