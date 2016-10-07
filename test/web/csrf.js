@@ -16,12 +16,11 @@ describe('web/csrf', () => {
   require('koa-csrf')(app);
 
   const opts = {
-    match: [
-      '/csrf'
-    ],
+    match: '/csrf',
 
     ignore: [
-      '/ignore/*'
+      '/ignore/*',
+      /^\/skip\//
     ]
   };
 
@@ -56,6 +55,11 @@ describe('web/csrf', () => {
 
   it('config ignore skip csrf check', () => {
     return agent.post('/ignore/123').expect('ok');
+  });
+
+
+  it('config ignore rules with regexp', () => {
+    return agent.post('/skip/123').expect('ok');
   });
 
 
