@@ -19,7 +19,7 @@
     "iconv-lite": "~0.4.13",
     "koa-bodyparser": "~2.2.0",
     "koa-conditional-get": "~1.0.3",
-    "koa-csrf": "~3.0.4",
+    "koa-csrf": "~2.5.0",
     "koa-etag": "~2.1.1",
     "koa-favicon": "~1.2.1",
     "koa-response-time": "~1.0.2",
