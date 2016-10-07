@@ -40,6 +40,14 @@ describe('plugin', function() {
     return request(myapp.callback())
       .get('/hello').expect('hello');
   });
+
+
+  it('security headers', function() {
+    return agent.get('/hello')
+      .expect('X-XSS-Protection', '1; mode=block')
+      .expect('X-Content-Type-Options', 'nosniff')
+      .expect('X-Download-Options', 'noopen');
+  });
 });
 
 
