@@ -1,4 +1,4 @@
-# plover-web-util
+# plover-web
 
 
 [![NPM version][npm-image]][npm-url]
@@ -91,9 +91,9 @@ this.ctx.assertMethod('GET');
 
 
 
-[npm-image]: https://img.shields.io/npm/v/plover-web-util.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/plover-web-util
-[travis-image]: https://img.shields.io/travis/ploverjs/plover-web-util/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/ploverjs/plover-web-util
-[coveralls-image]: https://img.shields.io/codecov/c/github/ploverjs/plover-web-util.svg?style=flat-square
-[coveralls-url]: https://codecov.io/github/ploverjs/plover-web-util?branch=master
+[npm-image]: https://img.shields.io/npm/v/plover-web.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/plover-web
+[travis-image]: https://img.shields.io/travis/ploverjs/plover-web/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/ploverjs/plover-web
+[coveralls-image]: https://img.shields.io/codecov/c/github/ploverjs/plover-web.svg?style=flat-square
+[coveralls-url]: https://codecov.io/github/ploverjs/plover-web?branch=master
