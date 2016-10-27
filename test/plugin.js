@@ -2,24 +2,22 @@
 
 
 const pathUtil = require('path');
-const request = require('supertest');
-const plover = require('plover');
+const mm = require('plover-test-mate');
 
 const plugin = require('../lib/plugin');
 
 
 describe('plugin', function() {
-  const root = pathUtil.join(__dirname, './fixtures/app');
-  const settings = require(pathUtil.join(root, 'config/app.js'));
-  const app = plover(settings);
+  const app = mm({
+    applicationRoot: pathUtil.join(__dirname, './fixtures/app')
+  });
 
-  plugin(app);
-  hello(app);
+  app.use(plugin);
+  app.use(hello);
 
-  const agent = request.agent(app.callback());
 
   it('etag and rtime', function() {
-    return agent.get('/hello')
+    return app.get('/hello')
       .expect(function(res) {
         res.header.etag.should.not.empty();
         res.header['x-response-time'].should.not.empty();
@@ -29,21 +27,20 @@ describe('plugin', function() {
 
 
   it('favicon', function() {
-    return agent.get('/favicon.ico').expect(200);
+    return app.get('/favicon.ico').expect(200);
   });
 
 
   it('not setting.web', function() {
-    const myapp = plover({ applicationRoot: __dirname });
-    plugin(myapp);
-    hello(myapp);
-    return request(myapp.callback())
-      .get('/hello').expect('hello');
+    const myapp = mm();
+    myapp.use(plugin);
+    myapp.use(hello);
+    return myapp.get('/hello').expect('hello');
   });
 
 
   it('security headers', function() {
-    return agent.get('/hello')
+    return app.get('/hello')
       .expect('X-XSS-Protection', '1; mode=block')
       .expect('X-Content-Type-Options', 'nosniff')
       .expect('X-Download-Options', 'noopen');
