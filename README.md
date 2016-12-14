@@ -30,6 +30,7 @@ const app = plover({
 | bodyParser | Boolean | 解析`request.body`（默认开启），详见 [koa-bodyparser](https://github.com/koajs/bodyparser) |
 | cookieSession | Object | 一个简单的基于`cookie`的`session`功能，详见 [koa-session](https://github.com/koajs/session) ｜
 | csrf | Object | `CSRF`tokens, 详见 [koa-csrf](https://github.com/koajs/csrf) |
+| compress | Object | 设置compress压缩，详见[koa-compress](https://github.com/koajs/compress) |
 
 ## Others
 ### query
